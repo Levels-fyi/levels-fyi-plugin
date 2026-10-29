@@ -1,0 +1,42 @@
+{
+  "$schema": "https://antigravity.google/schemas/v1/plugin.json",
+  "name": "levels-fyi",
+  "displayName": "Levels.fyi",
+  "version": "1.0.0",
+  "description": "Salaries, jobs and career insights from 1M+ salaries shared on Levels.fyi, across 100+ roles: benchmark your pay, evaluate and compare offers and counteroffers, check a raise, promotion or merit cycle, compare company levels and locations, search open jobs and add your own salary.",
+  "author": {
+    "name": "Levels.fyi",
+    "email": "team@levels.fyi",
+    "url": "https://www.levels.fyi"
+  },
+  "homepage": "https://www.levels.fyi/?from=antigravity_plugin",
+  "repository": "https://github.com/Levels-fyi/levels-fyi-plugin",
+  "license": "MIT",
+  "keywords": [
+    "levels-fyi",
+    "salary",
+    "compensation",
+    "pay",
+    "job-offers",
+    "offer-negotiation",
+    "levels",
+    "jobs",
+    "career",
+    "tech-salaries",
+    "raise",
+    "promotion",
+    "counteroffer",
+    "rsu",
+    "vesting",
+    "comp-statement"
+  ],
+  "logo": "./assets/logo.png",
+  "suggestedPrompts": [
+    "I'm a Google L5 in Seattle making $190k base and $120k stock a year. Am I underpaid?",
+    "I have a Stripe offer: $210k base, $400k RSUs over 4 years. Is it good?",
+    "Find remote product manager jobs that pay at least $200k base."
+  ],
+  "skills": [
+    "./skills"
+  ]
+}

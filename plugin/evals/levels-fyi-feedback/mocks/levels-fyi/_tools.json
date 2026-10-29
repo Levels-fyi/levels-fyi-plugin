@@ -1,0 +1,53 @@
+{
+  "tools": [
+    {
+      "name": "send-feedback",
+      "description": "Report Levels.fyi data that the user says is wrong or missing, or a missing feature. Tell the user what will be sent and get their OK first. Never include personal details.",
+      "annotations": {
+        "title": "Send Feedback",
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false
+      },
+      "inputSchema": {
+        "type": "object",
+        "required": [
+          "kind",
+          "message"
+        ],
+        "properties": {
+          "kind": {
+            "type": "string",
+            "enum": [
+              "wrong_data",
+              "missing_data",
+              "missing_feature",
+              "other"
+            ]
+          },
+          "message": {
+            "type": "string",
+            "maxLength": 1000
+          },
+          "toolName": {
+            "type": "string"
+          },
+          "companySlug": {
+            "type": "string"
+          },
+          "jobFamilySlug": {
+            "type": "string"
+          },
+          "locationSlug": {
+            "type": "string"
+          },
+          "contactEmail": {
+            "type": "string",
+            "format": "email"
+          }
+        }
+      }
+    }
+  ]
+}
