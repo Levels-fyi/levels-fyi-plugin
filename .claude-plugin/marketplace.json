@@ -1,0 +1,17 @@
+{
+  "name": "levels-fyi",
+  "owner": {
+    "name": "Levels.fyi",
+    "email": "team@levels.fyi"
+  },
+  "metadata": {
+    "description": "Salaries, jobs & career advice"
+  },
+  "plugins": [
+    {
+      "name": "levels-fyi",
+      "source": "./plugin",
+      "description": "Salaries, jobs and career insights from 1M+ salaries shared on Levels.fyi, across 100+ roles: benchmark your pay, evaluate and compare offers and counteroffers, check a raise, promotion or merit cycle, compare company levels and locations, search open jobs and add your own salary."
+    }
+  ]
+}

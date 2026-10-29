@@ -1,0 +1,12 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+  "mcpServers": {
+    "levels-fyi": {
+      "type": "streamable-http",
+      "url": "https://mcp.levels.fyi/",
+      "headers": {
+        "X-Levels-Source": "agent-plugin/1.0.0"
+      }
+    }
+  }
+}

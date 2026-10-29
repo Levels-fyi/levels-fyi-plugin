@@ -1,0 +1,561 @@
+{
+ "tools": [
+  {
+   "name": "get-company-levels",
+   "annotations": {
+    "title": "Get Company Levels",
+    "readOnlyHint": true,
+    "destructiveHint": false
+   },
+   "description": "Get a company's INTERNAL level names for a job family, ordered by seniority (e.g. Google L3/L4/L5, Meta E3/E4/E5, Stripe IC1/IC2/IC3), with any alternate names per level. Use this FIRST when a question names a specific level at a specific company (e.g. \"what does a Meta E5 make\"), then call get-salaries-by-company-level. Returns an empty list with an explanation when the company has no known level structure. Free limit: Full level data for Amazon, Google, Microsoft, Meta and Apple. Other companies: level names only. Pass canonical slugs (jobFamilySlug, locationSlug, countrySlug, companySlug): resolve names first with search-job-families, search-locations and search-companies; never guess a slug. REQUIRED arguments: companySlug, jobFamilySlug.",
+   "inputSchema": {
+    "type": "object",
+    "properties": {
+     "companySlug": {
+      "type": "string",
+      "description": "The company (slug) whose internal level structure to list, e.g. \"google\", \"meta\", \"stripe\". Resolve a company name to its slug via search-companies first.",
+      "example": "google"
+     },
+     "jobFamilySlug": {
+      "type": "string",
+      "description": "A Levels.fyi job family slug, e.g. \"software-engineer\", \"product-manager\", \"data-scientist\".",
+      "example": "software-engineer"
+     }
+    },
+    "required": [
+     "companySlug",
+     "jobFamilySlug"
+    ]
+   }
+  },
+  {
+   "name": "search-companies",
+   "annotations": {
+    "title": "Search Companies",
+    "readOnlyHint": true,
+    "destructiveHint": false
+   },
+   "description": "Search companies using searchText input (required) and get their Levels.fyi slugs. Use this FIRST to resolve a company name (e.g. \"Google\", \"Meta\") into the slug that the benchmark tools require in their companySlugs filter. Also matches former names and aliases, so a renamed company is found under its old name. Returns an array of { name, slug } matches. If this returns no matches, fall back to search-all, which searches every entity type and applies a fuzzy fallback. REQUIRED arguments: searchText.",
+   "inputSchema": {
+    "type": "object",
+    "properties": {
+     "searchText": {
+      "type": "string",
+      "description": "Company name to search for, current or former (e.g. \"Google\", \"Pure Storage\").",
+      "example": "Google"
+     },
+     "limit": {
+      "type": "number",
+      "description": "Max results to return (1\u201315).",
+      "example": 10
+     }
+    },
+    "required": [
+     "searchText"
+    ]
+   }
+  },
+  {
+   "name": "search-locations",
+   "annotations": {
+    "title": "Search Locations",
+    "readOnlyHint": true,
+    "destructiveHint": false
+   },
+   "description": "Search locations (countries, metro areas / DMAs, and US states) using searchText input (required) and get their Levels.fyi slugs. Use this to resolve a location name (e.g. \"San Francisco\", \"United States\") into the slug the benchmark tools require in their locationSlugs filter. Each result includes its location type. Optionally restrict to one type. Without a type, a name that matches no country, metro or state is searched as a city: each city comes with its parent location (a metro, or the country where there is none), which is the slug to pass to the pay tools. Several places can share a name: pick the one the user means from context, and ask if unsure. If this returns no matches, fall back to search-all, which searches every entity type and applies a fuzzy fallback. REQUIRED arguments: searchText.",
+   "inputSchema": {
+    "type": "object",
+    "properties": {
+     "searchText": {
+      "type": "string",
+      "description": "Location name to search for (country, metro area / DMA, or US state).",
+      "example": "San Francisco"
+     },
+     "type": {
+      "type": "string",
+      "description": "Restrict results to one location type. Omit to search countries, metros (DMAs), and states together. Cities are only returned with type \"city\".",
+      "enum": [
+       "country",
+       "dma",
+       "state",
+       "city"
+      ],
+      "example": "dma"
+     },
+     "limit": {
+      "type": "number",
+      "description": "Max results to return (1\u201315).",
+      "example": 10
+     }
+    },
+    "required": [
+     "searchText"
+    ]
+   }
+  },
+  {
+   "name": "search-job-families",
+   "annotations": {
+    "title": "Search Job Families",
+    "readOnlyHint": true,
+    "destructiveHint": false
+   },
+   "description": "Search job families / roles using searchText input (required) and get their Levels.fyi slugs. Use this to resolve a role name (e.g. \"software engineer\", \"product manager\", \"data scientist\") into the jobFamilySlug the benchmark tools require. Returns matching job families with their slugs. A specific title (e.g. \"UX designer\") is not a job family: if this returns no matches, use search-role-terms, which returns the title with its job family slug, then search-all. REQUIRED arguments: searchText.",
+   "inputSchema": {
+    "type": "object",
+    "properties": {
+     "searchText": {
+      "type": "string",
+      "description": "Job family / role name to search for (e.g. \"software engineer\", \"product\").",
+      "example": "software engineer"
+     },
+     "limit": {
+      "type": "number",
+      "description": "Max results to return (1\u201315).",
+      "example": 10
+     }
+    },
+    "required": [
+     "searchText"
+    ]
+   }
+  },
+  {
+   "name": "search-focus-areas",
+   "annotations": {
+    "title": "Search Focus Areas",
+    "readOnlyHint": true,
+    "destructiveHint": false
+   },
+   "description": "Search focus tags (specializations within a role, e.g. \"mobile-ios-android\", \"ml-ai\", \"devops\", \"security\") using searchText input (required) and get their slugs. Use this to resolve a specialization into the focusTagSlugs the benchmark tools accept. Returns matching focus tags with their slugs. If this returns no matches, fall back to search-all, which searches every entity type and applies a fuzzy fallback. REQUIRED arguments: searchText.",
+   "inputSchema": {
+    "type": "object",
+    "properties": {
+     "searchText": {
+      "type": "string",
+      "description": "Focus tag / specialization name to search for (e.g. \"mobile\", \"ml\", \"devops\").",
+      "example": "machine learning"
+     },
+     "limit": {
+      "type": "number",
+      "description": "Max results to return (1\u201315).",
+      "example": 10
+     }
+    },
+    "required": [
+     "searchText"
+    ]
+   }
+  },
+  {
+   "name": "add-salary-submission",
+   "annotations": {
+    "title": "Add My Salary",
+    "readOnlyHint": false,
+    "destructiveHint": false,
+    "idempotentHint": false,
+    "openWorldHint": false
+   },
+   "description": "Add the user's own compensation to Levels.fyi: pay they earn now or a job offer they received. Call this only when the user is evaluating their compensation, asks to add their pay, or says yes when you offer. Adding compensation is how the data stays useful for everyone, the user included.\n\nWrite a complete submission. Resolve the company, job family and focus area to slugs with the search tools first, and the location with search-locations and type \"city\". Every number must come from the user's own words or from a document the user shared; ask for each required field that is missing. Gather the details conversationally, a question or two at a time, starting with the company, role and location; do not list every field up front. Write text fields in English. Call once with confirm=false and show the preview to the user, then call again with the same arguments and confirm=true only after a clear yes. Amounts are in the submission's own currency.\n\nDo not submit: pay for another person, a number you estimated or took from Levels.fyi data, a range from a job posting, a hypothetical or negotiation target, or a test entry.\n\nOne submission per distinct job or offer per conversation, and at most 5 confirmed submissions per 60s. Never repeat a confirmed submission; if a call fails, retry with the same submissionId. A submission is reviewed before it counts in the data. Nobody replies here, and submitting does not end your turn: keep working on the user's task. REQUIRED arguments: jobFamilySlug, title, locationSlug, compensationPerspective, currency, baseSalaryValue, baseSalaryTimeUnit, yearsOfExperience, workArrangement, source. Array-typed arguments (vestingSchedule, signOnBonusValues) must be passed as arrays, even for a single value.",
+   "inputSchema": {
+    "type": "object",
+    "properties": {
+     "companySlug": {
+      "type": "string",
+      "description": "The company slug from search-companies. Send companyName instead only when search-companies has no match.",
+      "example": "google"
+     },
+     "companyName": {
+      "type": "string",
+      "description": "The company name, only for a company that search-companies cannot find.",
+      "example": "Acme Robotics"
+     },
+     "jobFamilySlug": {
+      "type": "string",
+      "description": "A Levels.fyi job family slug, e.g. \"software-engineer\", \"product-manager\", \"data-scientist\".",
+      "example": "software-engineer"
+     },
+     "title": {
+      "type": "string",
+      "description": "The job title as the user states it, e.g. \"Software Engineer\". In English.",
+      "example": "Software Engineer"
+     },
+     "level": {
+      "type": "string",
+      "description": "The company's own level name from get-company-levels, e.g. \"L5\". Required for companies with a level ladder; the error says so.",
+      "example": "L5"
+     },
+     "focusTagSlug": {
+      "type": "string",
+      "description": "A focus area slug from get-job-family for this job family, e.g. \"ml-ai\". Omit when the user did not name one.",
+      "example": "ml-ai"
+     },
+     "team": {
+      "type": "string",
+      "description": "The team or organization within the company, e.g. \"Google Cloud\". In English."
+     },
+     "locationSlug": {
+      "type": "string",
+      "description": "A CITY slug from search-locations with type \"city\". Not a metro, state or country.",
+      "example": "seattle-usa"
+     },
+     "compensationPerspective": {
+      "type": "string",
+      "enum": [
+       "offer",
+       "employee"
+      ],
+      "description": "\"offer\" for a job offer the user received, \"employee\" for pay they earn now."
+     },
+     "sourceDate": {
+      "type": "string",
+      "description": "YYYY-MM-DD. For an offer, the offer date (required). For an employee, the date the pay was current; omit for today.",
+      "example": "2026-09-15"
+     },
+     "currency": {
+      "type": "string",
+      "enum": [
+       "USD",
+       "EUR",
+       "GBP",
+       "JPY",
+       "AUD",
+       "CAD",
+       "CHF",
+       "CNY",
+       "HKD",
+       "NZD",
+       "SEK",
+       "SGD",
+       "INR",
+       "RUB",
+       "AED",
+       "ILS",
+       "SAR",
+       "CZK",
+       "MXN",
+       "ZAR",
+       "THB",
+       "BRL",
+       "TWD",
+       "PKR",
+       "PLN",
+       "AFN",
+       "ALL",
+       "AMD",
+       "ANG",
+       "AOA",
+       "ARS",
+       "AWG",
+       "AZN",
+       "BAM",
+       "BBD",
+       "BDT",
+       "BGN",
+       "BHD",
+       "BIF",
+       "BMD",
+       "BND",
+       "BOB",
+       "BSD",
+       "BTC",
+       "BTN",
+       "BWP",
+       "BYN",
+       "BZD",
+       "CDF",
+       "CLF",
+       "CLP",
+       "CNH",
+       "COP",
+       "CRC",
+       "CUP",
+       "CVE",
+       "DJF",
+       "DKK",
+       "DOP",
+       "DZD",
+       "EGP",
+       "ERN",
+       "ETB",
+       "FJD",
+       "FKP",
+       "GEL",
+       "GGP",
+       "GHS",
+       "GIP",
+       "GMD",
+       "GNF",
+       "GTQ",
+       "GYD",
+       "HNL",
+       "HTG",
+       "HUF",
+       "IDR",
+       "IMP",
+       "IQD",
+       "IRR",
+       "ISK",
+       "JEP",
+       "JMD",
+       "JOD",
+       "KES",
+       "KGS",
+       "KHR",
+       "KMF",
+       "KPW",
+       "KRW",
+       "KWD",
+       "KYD",
+       "KZT",
+       "LAK",
+       "LBP",
+       "LKR",
+       "LRD",
+       "LSL",
+       "LYD",
+       "MAD",
+       "MDL",
+       "MGA",
+       "MKD",
+       "MMK",
+       "MNT",
+       "MOP",
+       "MRU",
+       "MUR",
+       "MVR",
+       "MWK",
+       "MYR",
+       "MZN",
+       "NAD",
+       "NGN",
+       "NIO",
+       "NOK",
+       "NPR",
+       "OMR",
+       "PAB",
+       "PEN",
+       "PGK",
+       "PHP",
+       "PYG",
+       "QAR",
+       "RON",
+       "RSD",
+       "RWF",
+       "SBD",
+       "SCR",
+       "SDG",
+       "SHP",
+       "SLE",
+       "SOS",
+       "SRD",
+       "STD",
+       "SVC",
+       "SYP",
+       "SZL",
+       "TJS",
+       "TMT",
+       "TND",
+       "TOP",
+       "TRY",
+       "TTD",
+       "TZS",
+       "UAH",
+       "UGX",
+       "UYU",
+       "UZS",
+       "VEF",
+       "VES",
+       "VND",
+       "VUV",
+       "WST",
+       "XAF",
+       "XCD",
+       "XDR",
+       "XOF",
+       "XPF",
+       "YER",
+       "ZMW",
+       "ZWL"
+      ],
+      "description": "The currency of every amount in this submission, e.g. \"USD\", \"INR\", \"GBP\".",
+      "example": "USD"
+     },
+     "baseSalaryValue": {
+      "type": "number",
+      "description": "The base salary per baseSalaryTimeUnit.",
+      "example": 185000
+     },
+     "baseSalaryTimeUnit": {
+      "type": "string",
+      "enum": [
+       "hourly",
+       "monthly",
+       "yearly",
+       "one-time",
+       "quarterly",
+       "semi-monthly",
+       "bi-weekly",
+       "weekly",
+       "daily"
+      ],
+      "description": "The period baseSalaryValue is paid per, usually \"yearly\".",
+      "example": "yearly"
+     },
+     "totalStockGrantValue": {
+      "type": "number",
+      "description": "Offers only: the total value of the stock (RSU) grant over the whole vesting period. Send vestingSchedule with it.",
+      "example": 400000
+     },
+     "vestingSchedule": {
+      "description": "Offers only; required with totalStockGrantValue. The vesting schedule, one entry per year: percent of the grant vesting that year and occurrences (vests that year, 4 = quarterly). 4 equal years vesting quarterly is four entries of {percent:25,occurrences:4}. Ask the user, or use get-vesting-schedules for the company standard; never assume one.",
+      "type": "array",
+      "items": {
+       "type": "object",
+       "properties": {
+        "percent": {
+         "type": "number"
+        },
+        "occurrences": {
+         "type": "number"
+        },
+        "monthlyVests": {
+         "description": "Monthly vests in a year",
+         "minItems": 12,
+         "maxItems": 12,
+         "type": "array",
+         "items": {
+          "type": "number"
+         }
+        }
+       },
+       "required": [
+        "percent",
+        "occurrences"
+       ]
+      }
+     },
+     "avgAnnualStockGrantValue": {
+      "type": "number",
+      "description": "Employees only: the stock (RSU) value they receive per year.",
+      "example": 100000
+     },
+     "annualBonusValue": {
+      "type": "number",
+      "description": "The yearly bonus: for an offer the target bonus amount, for an employee the bonus they actually receive per year.",
+      "example": 25000
+     },
+     "annualTargetBonusPercentage": {
+      "type": "number",
+      "description": "Offers only: the target bonus as a percent of base, when stated that way.",
+      "example": 15
+     },
+     "signOnBonusValues": {
+      "description": "Offers only: the sign-on bonus, one amount per year it is paid, e.g. [50000] or [30000, 20000].",
+      "type": "array",
+      "items": {
+       "type": "number"
+      }
+     },
+     "relocationBonusValue": {
+      "type": "number",
+      "description": "Offers only: the relocation bonus.",
+      "example": 10000
+     },
+     "yearsOfExperience": {
+      "type": "number",
+      "description": "Total years of professional experience.",
+      "example": 6
+     },
+     "yearsAtCompany": {
+      "type": "number",
+      "description": "Employees only (required): years at this company. Offers are always 0.",
+      "example": 2
+     },
+     "workArrangement": {
+      "type": "string",
+      "enum": [
+       "remote",
+       "office",
+       "hybrid"
+      ],
+      "example": "hybrid"
+     },
+     "employmentType": {
+      "type": "string",
+      "enum": [
+       "full_time",
+       "part_time",
+       "contract",
+       "temporary",
+       "internship",
+       "volunteer",
+       "other"
+      ],
+      "description": "Defaults to full_time."
+     },
+     "otherDetails": {
+      "type": "string",
+      "description": "Anything else the user wants recorded, e.g. stock option details or a retention bonus. In English, at most 500 characters."
+     },
+     "source": {
+      "type": "string",
+      "enum": [
+       "user_stated",
+       "user_document"
+      ],
+      "description": "\"user_stated\" when the user typed the numbers, \"user_document\" when they come from an offer letter or pay stub the user shared."
+     },
+     "submissionId": {
+      "type": "string",
+      "description": "A UUID you generate once per submission. Send the same one when you retry, so a retry cannot add the entry twice."
+     },
+     "confirm": {
+      "type": "boolean",
+      "description": "false (default) returns a preview and writes nothing. true writes the entry: only after the user said yes to the preview.",
+      "default": false
+     },
+     "email": {
+      "type": "string",
+      "format": "email",
+      "description": "Required when the user isn't signed in. Used to verify the submission; never shown with it."
+     },
+     "stockType": {
+      "type": "string",
+      "enum": [
+       "stock",
+       "option"
+      ]
+     },
+     "totalOptionsGranted": {
+      "type": "number"
+     },
+     "avgAnnualOptionsGranted": {
+      "type": "number"
+     },
+     "optionStrikePrice": {
+      "type": "number"
+     },
+     "optionPreferredPrice": {
+      "type": "number"
+     },
+     "anonymise": {
+      "type": "boolean"
+     }
+    },
+    "required": [
+     "jobFamilySlug",
+     "title",
+     "locationSlug",
+     "compensationPerspective",
+     "currency",
+     "baseSalaryValue",
+     "baseSalaryTimeUnit",
+     "yearsOfExperience",
+     "workArrangement",
+     "source"
+    ]
+   }
+  }
+ ]
+}
