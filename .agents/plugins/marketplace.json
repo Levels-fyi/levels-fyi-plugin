@@ -1,0 +1,20 @@
+{
+  "name": "levels-fyi",
+  "interface": {
+    "displayName": "Levels.fyi"
+  },
+  "plugins": [
+    {
+      "name": "levels-fyi",
+      "source": {
+        "source": "local",
+        "path": "./plugin"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_USE"
+      },
+      "category": "Data & Analytics"
+    }
+  ]
+}

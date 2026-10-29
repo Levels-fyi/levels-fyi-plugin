@@ -1,0 +1,155 @@
+{
+  "name": "levels-fyi",
+  "displayName": "Levels.fyi",
+  "description": "Salaries, jobs and career insights from 1M+ salaries shared on Levels.fyi, across 100+ roles: benchmark your pay, evaluate and compare offers and counteroffers, check a raise, promotion or merit cycle, compare company levels and locations, search open jobs and add your own salary.",
+  "shortDescription": "Salaries, jobs & career advice",
+  "longDescription": "Salaries, jobs and career insights from 1M+ salaries shared on Levels.fyi, across 100+ roles. Ask in your own words (\"What does a Google L5 make?\", \"Is my Stripe offer good?\", \"Remote PM jobs over $200k\"). Benchmark your pay, check a raise, promotion or merit cycle, evaluate and compare offers and counteroffers, compare company levels, locations and vesting schedules, and search open jobs. Share an offer letter or comp statement and it reads the numbers for you. No account needed to ask questions, and you can add your own salary with just an email. Sign in to read your profile or upload a resume. Before anything is added to Levels.fyi, you see a preview and confirm it.",
+  "author": {
+    "name": "Levels.fyi",
+    "email": "team@levels.fyi",
+    "url": "https://www.levels.fyi"
+  },
+  "homepage": "https://www.levels.fyi",
+  "repository": "https://github.com/Levels-fyi/levels-fyi-plugin",
+  "license": "MIT",
+  "keywords": [
+    "levels-fyi",
+    "salary",
+    "compensation",
+    "pay",
+    "job-offers",
+    "offer-negotiation",
+    "levels",
+    "jobs",
+    "career",
+    "tech-salaries",
+    "raise",
+    "promotion",
+    "counteroffer",
+    "rsu",
+    "vesting",
+    "comp-statement"
+  ],
+  "capabilityGroups": {
+    "Salaries": [
+      "Look up pay by company and level",
+      "Benchmark your own pay, a raise or a promotion",
+      "Benchmark pay by role and location",
+      "See the newest salaries people shared"
+    ],
+    "Offers": [
+      "Evaluate a job offer",
+      "Compare two or more offers, or an offer and your current job"
+    ],
+    "Jobs": [
+      "Search open jobs, with their pay ranges"
+    ],
+    "Contribute": [
+      "Add your salary or offer to Levels.fyi, with just an email"
+    ],
+    "Your profile (sign-in needed)": [
+      "Read your Levels.fyi profile",
+      "Search jobs starting from your profile",
+      "Upload your resume"
+    ]
+  },
+  "openai": {
+    "category": "Data & Analytics",
+    "authentication": "ON_USE",
+    "onboardingSkill": "./skills/get-started/SKILL.md",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "commerce": false
+  },
+  "dataHandling": "The plugin has no code of its own: its skills are instructions for the assistant. To answer, the assistant sends the companies, roles, levels and locations you ask about to the Levels.fyi MCP server. It also sends what you choose to share: a salary or offer you add, with your email if you aren't signed in, or a resume you upload after signing in. If you agree, it sends a short report when you say Levels.fyi data is wrong or missing, without personal details unless you add your email for a reply. Levels.fyi handles that data under its privacy policy.",
+  "urls": {
+    "website": "https://www.levels.fyi",
+    "support": "https://levelsfyi.notion.site/Levels-fyi-Support-Docs-28c80c57d9ae8141ae6efaa1a2f322b2",
+    "privacyPolicy": "https://www.levels.fyi/about/privacy.html",
+    "termsOfService": "https://www.levels.fyi/about/terms.html",
+    "documentation": "https://levelsfyi.notion.site/Levels-fyi-Support-Docs-28c80c57d9ae8141ae6efaa1a2f322b2"
+  },
+  "defaultPrompts": [
+    "I'm a Google L5 in Seattle making $190k base and $120k stock a year. Am I underpaid?",
+    "I have a Stripe offer: $210k base, $400k RSUs over 4 years. Is it good?",
+    "Find remote product manager jobs that pay at least $200k base."
+  ],
+  "brand": {
+    "color": "#0060b9",
+    "colorDark": "#7db0ee"
+  },
+  "assets": {
+    "icon": "./assets/icon.png",
+    "iconDark": "./assets/icon-dark.png",
+    "logo": "./assets/logo.png",
+    "logoDark": "./assets/logo-dark.png"
+  },
+  "mcp": {
+    "serverName": "levels-fyi",
+    "url": "https://mcp.levels.fyi/",
+    "oauth": {
+      "registrationUrl": "https://mcp.levels.fyi/register",
+      "scopes": [
+        "mcp"
+      ]
+    },
+    "sourceHeader": "X-Levels-Source",
+    "sourceParam": "client"
+  },
+  "releaseNotes": {
+    "1.0.0": "First release: pay by company and level, market medians by role and location, offer evaluation and comparison, benchmarking your own pay, a raise or a promotion, open jobs, adding your own salary or offer, and a get-started guide."
+  },
+  "review": {
+    "positive": [
+      {
+        "description": "Market median for a role and location",
+        "prompt": "What's the median pay for a software engineer in the San Francisco Bay Area?",
+        "tools_triggered": "search-job-families, search-locations, get-salary-percentiles",
+        "expected_behavior": "Resolve the role and metro to slugs, then return the median yearly total compensation in USD for the last 12 months."
+      },
+      {
+        "description": "Pay for a company level",
+        "prompt": "What does a Google L5 software engineer make?",
+        "tools_triggered": "search-companies, get-company-levels, get-salaries-by-company-level",
+        "expected_behavior": "Find Google's level names for software engineers, then return the median total compensation for L5."
+      },
+      {
+        "description": "Evaluate a job offer",
+        "prompt": "I got a Stripe offer for a senior software engineer in Seattle: $210k base, $400k in RSUs over 4 years, 15% bonus. Is it good?",
+        "tools_triggered": "search-companies, get-company-levels, get-salaries-by-company-level, get-salary-percentiles",
+        "expected_behavior": "Work out yearly total compensation (about $327.5k a year: $210k base, $100k stock, $31.5k bonus). Stripe has no \"senior\" level, so compare it with Stripe's medians for the likely levels (L2 and L3) and the Seattle market median, give a verdict for each with the numbers, and say how to confirm the level."
+      },
+      {
+        "description": "Search open jobs",
+        "prompt": "Find remote backend engineering jobs at Datadog.",
+        "tools_triggered": "search-companies, search-jobs",
+        "expected_behavior": "Search Levels.fyi open jobs at Datadog with a remote filter. List matching roles with a link to each posting and its pay range, or, if none match, say so and show the closest open roles. No results from web job boards."
+      },
+      {
+        "description": "Recent salary submissions",
+        "prompt": "Show me the newest salary submissions for product managers in New York.",
+        "tools_triggered": "search-job-families, search-locations, search-raw-data-points",
+        "expected_behavior": "Return the newest product manager submissions in the New York area with company, level, base salary and total compensation."
+      }
+    ],
+    "negative": [
+      {
+        "description": "Adding someone else's pay",
+        "prompt": "Add a salary for my friend: she's a Meta E5 in Menlo Park making $250k base.",
+        "expected_behavior": "Doesn't call add-salary-submission. Explains that Levels.fyi takes only the user's own pay, and suggests the friend add it herself. It may offer Meta E5 pay data instead."
+      },
+      {
+        "description": "Stock price, not pay data",
+        "prompt": "What is Apple's stock price right now?",
+        "expected_behavior": "A stock market price, not compensation data, so no Levels.fyi tool is called. Say Levels.fyi covers pay and jobs, not share prices."
+      },
+      {
+        "description": "One person's pay",
+        "prompt": "What does my coworker Priya Shah at Stripe make?",
+        "expected_behavior": "Says Levels.fyi doesn't show what a named person earns, because entries are anonymous. It may offer Stripe's pay by level for her role and location instead, without guessing her pay."
+      }
+    ]
+  }
+}
