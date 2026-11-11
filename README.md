@@ -21,7 +21,7 @@ This is the free version of Levels.fyi for individuals. It has pay by job family
 | Codex | `codex plugin marketplace add Levels-fyi/levels-fyi-plugin`, then install Levels.fyi |
 | Cursor | **Dashboard** > **Plugins & MCPs** > **Add Marketplace** > **Import from Repo**, then enter `https://github.com/Levels-fyi/levels-fyi-plugin`. For the MCP server only, [add it in one click](https://cursor.com/install-mcp?name=levels-fyi&config=eyJ1cmwiOiJodHRwczovL21jcC5sZXZlbHMuZnlpLyJ9) |
 | Antigravity | `agy plugin install https://github.com/Levels-fyi/levels-fyi-plugin` |
-| Gemini | In [Gemini Developer Mode](https://gemini.google.com/devmode), add `https://mcp.levels.fyi/` as a custom app |
+| Gemini | In the Gemini web app, open Settings > [Connected Apps](https://gemini.google.com/apps), click **Add a custom app** and enter `https://mcp.levels.fyi/` (personal Google account in the US) |
 | Any MCP client | Add `https://mcp.levels.fyi/` as a remote MCP server, for example `claude mcp add --transport http levels-fyi https://mcp.levels.fyi/` |
 | Other agents (skills) | `npx skills add Levels-fyi/levels-fyi-plugin`, then add `https://mcp.levels.fyi/` as a remote MCP server, or let the agent connect it on first use |
 
