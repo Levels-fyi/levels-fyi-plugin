@@ -297,7 +297,7 @@ ${Object.entries(listing.capabilityGroups)
 ## Install
 
 - **Claude (web, desktop and Cowork)**: open **Customize**, then **Plugins**, and add ${listing.displayName} from the directory.
-${repositorySlug ? `- **Claude Code**: run \`/plugin install ${listing.name} --marketplace ${repositorySlug}\`.\n- **Codex**: run \`codex plugin marketplace add ${repositorySlug}\`, then install ${listing.displayName} from the plugin list.\n` : ''}- **ChatGPT**: add ${listing.displayName} from the plugin directory.
+${repositorySlug ? `- **Claude Code**: run \`/plugin install ${listing.name} --marketplace ${repositorySlug}\`.\n- **Codex**: run \`codex plugin marketplace add ${repositorySlug}\`, then install ${listing.displayName} from the plugin list.\n` : ''}- **ChatGPT**: [add ${listing.displayName} to ChatGPT](${listing.urls.chatgpt}).
 ${repositorySlug ? `- **Cursor**: in **Dashboard** > **Plugins & MCPs**, select **Add Marketplace** > **Import from Repo** and enter \`https://github.com/${repositorySlug}\`.` : ''}
 
 Then connect the ${listing.displayName} connector when asked. You can ask questions without signing in.

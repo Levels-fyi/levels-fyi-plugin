@@ -83,6 +83,7 @@
   "dataHandling": "The plugin has no code of its own: its skills are instructions for the assistant. To answer, the assistant sends the companies, roles, levels and locations you ask about to the Levels.fyi MCP server. It also sends what you choose to share: a salary or offer you add, with your email if you aren't signed in, or a resume you upload after signing in. If you agree, it sends a short report when you say Levels.fyi data is wrong or missing, without personal details unless you add your email for a reply. Levels.fyi handles that data under its privacy policy.",
   "urls": {
     "website": "https://www.levels.fyi",
+    "chatgpt": "https://chatgpt.com/plugins/plugin_asdk_app_6ae3865358688191a1e33cfb669dc25a",
     "support": "https://levelsfyi.notion.site/Levels-fyi-Support-Docs-28c80c57d9ae8141ae6efaa1a2f322b2",
     "privacyPolicy": "https://www.levels.fyi/about/privacy.html",
     "termsOfService": "https://www.levels.fyi/about/terms.html",

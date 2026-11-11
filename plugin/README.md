@@ -35,7 +35,7 @@ Salaries, jobs and career insights from 1M+ salaries shared on Levels.fyi, acros
 - **Claude (web, desktop and Cowork)**: open **Customize**, then **Plugins**, and add Levels.fyi from the directory.
 - **Claude Code**: run `/plugin install levels-fyi --marketplace Levels-fyi/levels-fyi-plugin`.
 - **Codex**: run `codex plugin marketplace add Levels-fyi/levels-fyi-plugin`, then install Levels.fyi from the plugin list.
-- **ChatGPT**: add Levels.fyi from the plugin directory.
+- **ChatGPT**: [add Levels.fyi to ChatGPT](https://chatgpt.com/plugins/plugin_asdk_app_6ae3865358688191a1e33cfb669dc25a).
 - **Cursor**: in **Dashboard** > **Plugins & MCPs**, select **Add Marketplace** > **Import from Repo** and enter `https://github.com/Levels-fyi/levels-fyi-plugin`.
 
 Then connect the Levels.fyi connector when asked. You can ask questions without signing in.
