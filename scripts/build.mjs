@@ -4,6 +4,7 @@
 // Generated and committed (CI fails if they don't match a fresh build):
 //   plugin/.claude-plugin/plugin.json, plugin/.mcp.json   Claude manifest and MCP server
 //   plugin/plugin.json                                     OpenAI manifest (ChatGPT and Codex), also the Agent Plugins standard
+//   plugin/.app.json                                       Codex: maps the server to the approved ChatGPT app
 //   plugin/mcp.json                                        Agent Plugins MCP server, which Antigravity also reads; the ChatGPT ZIP
 //                                                          gets its own OpenAI mcp.json instead
 //   plugin/.cursor-plugin/plugin.json, plugin/.cursor-mcp.json    Cursor manifest and MCP server
@@ -342,7 +343,12 @@ if (errors.length || (strict && warnings.length)) {
 
 writeJson(join(PLUGIN, '.claude-plugin', 'plugin.json'), claudePlugin);
 writeJson(join(PLUGIN, '.mcp.json'), claudeMcp);
-writeJson(join(PLUGIN, 'plugin.json'), openaiPlugin);
+// Codex installs from this repo: map the server to the approved ChatGPT app, as Supabase does. Public ZIP submission
+// rejects app references, so the ChatGPT ZIP gets openaiPlugin without them.
+const codexPlugin = structuredClone(openaiPlugin);
+codexPlugin.extensions['com.openai'].apps = './.app.json';
+writeJson(join(PLUGIN, 'plugin.json'), codexPlugin);
+writeJson(join(PLUGIN, '.app.json'), { apps: { [listing.mcp.serverName]: { id: listing.openai.appId } } });
 writeJson(join(PLUGIN, 'mcp.json'), agentMcp);
 writeJson(join(PLUGIN, '.cursor-plugin', 'plugin.json'), cursorPlugin);
 writeJson(join(PLUGIN, '.antigravity-plugin', 'plugin.json'), antigravityPlugin);
@@ -393,7 +399,8 @@ const stage = (name, paths) => {
 };
 
 // ChatGPT: plugin.json, mcp.json, skills/ and assets/ at the archive root.
-const chatgptStage = stage('chatgpt', ['plugin.json', 'skills', 'assets', 'LICENSE']);
+const chatgptStage = stage('chatgpt', ['skills', 'assets', 'LICENSE']);
+writeJson(join(chatgptStage, 'plugin.json'), openaiPlugin);
 writeJson(join(chatgptStage, 'mcp.json'), openaiMcp);
 const chatgptZip = join(DIST, 'chatgpt', `${listing.name}-${version}.zip`);
 zip(chatgptStage, chatgptZip, readdirSync(chatgptStage));

@@ -54,6 +54,7 @@
     ]
   },
   "openai": {
+    "appId": "asdk_app_6ae3865358688191a1e33cfb669dc25a",
     "category": "Data & Analytics",
     "authentication": "ON_USE",
     "onboardingSkill": "./skills/get-started/SKILL.md",
