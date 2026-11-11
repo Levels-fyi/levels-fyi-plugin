@@ -17,9 +17,10 @@ This is the free version of Levels.fyi for individuals. It has pay by job family
 |---|---|
 | Claude (web, desktop, Cowork) | **Customize** > **Plugins**, then add Levels.fyi from the directory. For the connector only, [add it in one click](https://claude.ai/new?modal=add-custom-connector&connectorName=Levels.fyi&connectorUrl=https%3A%2F%2Fmcp.levels.fyi%2F) |
 | Claude Code | `/plugin install levels-fyi --marketplace Levels-fyi/levels-fyi-plugin` |
-| ChatGPT | Add Levels.fyi from the plugin directory |
+| ChatGPT | [Add Levels.fyi to ChatGPT](https://chatgpt.com/plugins/plugin_asdk_app_6ae3865358688191a1e33cfb669dc25a) |
 | Codex | `codex plugin marketplace add Levels-fyi/levels-fyi-plugin`, then install Levels.fyi |
 | Cursor | **Dashboard** > **Plugins & MCPs** > **Add Marketplace** > **Import from Repo**, then enter `https://github.com/Levels-fyi/levels-fyi-plugin`. For the MCP server only, [add it in one click](https://cursor.com/install-mcp?name=levels-fyi&config=eyJ1cmwiOiJodHRwczovL21jcC5sZXZlbHMuZnlpLyJ9) |
+| Antigravity | `agy plugin install https://github.com/Levels-fyi/levels-fyi-plugin` |
 | Gemini | In [Gemini Developer Mode](https://gemini.google.com/devmode), add `https://mcp.levels.fyi/` as a custom app |
 | Any MCP client | Add `https://mcp.levels.fyi/` as a remote MCP server, for example `claude mcp add --transport http levels-fyi https://mcp.levels.fyi/` |
 | Other agents (skills) | `npx skills add Levels-fyi/levels-fyi-plugin`, then add `https://mcp.levels.fyi/` as a remote MCP server, or let the agent connect it on first use |
