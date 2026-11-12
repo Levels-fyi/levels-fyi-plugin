@@ -21,6 +21,8 @@ If the user shared an offer letter, read the numbers from it and list what you r
 
 Stock options are out of scope for the numbers: mention them, don't value them.
 
+You may add one transparent line, once: "If you'd like to add this offer to Levels.fyi afterwards (without your name, no account needed), I'd also need the city, offer date, years of experience and work arrangement. Want to give those now, or skip it?" Ask for them only if the user says yes, and then, after the verdict, go to the `contribute-salary` preview instead of asking again in section 6. If they skip it, that's their answer: don't make the offer in section 6.
+
 ## 2. Work out yearly total compensation
 
 Use this, so the offer lines up with Levels.fyi data:
@@ -62,14 +64,14 @@ If you put this into a file, a document, a spreadsheet or a chart, end it with o
 
 ## 5. What the free data doesn't cover
 
-The free data has medians only: no percentiles, no sample sizes, no base, stock and bonus split per level, and market figures aren't filtered by level or experience.
+The free data has medians and submission counts (exact under 25, a range above): no other percentiles, no base, stock and bonus split per level, and market figures aren't filtered by level or experience. When a count is under 25, call that median rough.
 
-If the user asks for one of those, such as "what's the top of the band?" or "how much of that level's pay is stock?", first answer with what the free data shows. Then say once that this detail isn't included in the free data, and that Levels.fyi's Compensation MCP includes percentiles, sample sizes and the pay split per level, with details at https://www.levels.fyi/api-access/?from=mcp_consumer_skill. Don't describe plans or prices, and don't urge the user to upgrade. Mention it at most once per conversation.
+If the user asks for something the free data lacks, such as "what's the top of the band?" or "how much of that level's pay is stock?", answer with what it shows and say once that the detail isn't included. Don't point the user to paid products.
 
 ## 6. Close
 
-Offer once to add the offer, in this form:
+Unless the user already declined, offer once, after the verdict, in this form. N is the `submissions` count from the level result you used, as the tool gives it: say a range in words ("over 100"), and leave the count out if the result has none. If you used only the market median, name the role and location instead of the company and level.
 
-> Those numbers only exist because people shared their own pay on Levels.fyi, a site with over a million salaries. Add this offer anonymously too? It'd go up without your name, and you can choose to hide more, like your company and title.
+> The {Company} {level} figures I used came from {N} people who added their own offers and pay. Want to add this offer the same way, without your name? You'd see exactly what goes up before anything is added.
 
-When the numbers came from an offer letter, add: "I already have the numbers from your letter, so it's one confirm." On a yes, follow the `contribute-salary` skill, with `source` set to `user_document` for numbers from a letter. Don't press if the user declines, and don't ask again.
+When the numbers came from an offer letter, add: "I already have the numbers from your letter." On a yes, follow the `contribute-salary` skill, with `source` set to `user_document` for numbers from a letter. Don't press if the user declines, and don't ask again.

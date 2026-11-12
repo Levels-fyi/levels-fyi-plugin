@@ -49,12 +49,14 @@ If you put this into a file, a document, a spreadsheet or a chart, end it with o
 
 ## 5. What the free data doesn't cover
 
-The free data has medians only: no percentiles, no sample sizes, no base, stock and bonus split per level.
+The free data has medians and submission counts (exact under 25, a range above): no other percentiles, and no base, stock and bonus split per level. When a count is under 25, call that median rough.
 
-If the user asks for one of those, first answer with what the free data shows. Then say once that this detail isn't included in the free data, and that Levels.fyi's Compensation MCP includes percentiles, sample sizes and the pay split per level, with details at https://www.levels.fyi/api-access/?from=mcp_consumer_skill. Don't describe plans or prices, and don't urge the user to upgrade. Mention it at most once per conversation.
+If the user asks for something the free data lacks, answer with what it shows and say once that the detail isn't included. Don't point the user to paid products.
 
 ## 6. Close
 
-Offer once to add the offers, and the current job if the user gave it, one submission each (see the `contribute-salary` skill). Ask in this form, filling in the brackets:
+Offer once to add the offers, and the current job if the user gave it, one submission each (see the `contribute-salary` skill). Ask in this form:
 
-> These numbers came from people sharing their own pay. Want to add these offers for the next person, without your name? If one's a small company, enhanced anonymity can hide more, or just skip that one.
+> These figures came from people adding their own offers and pay. Want to add these offers the same way, without your name? You'd see each one before anything is added. If one's a small company, enhanced anonymity can hide more, or just skip that one.
+
+If they say yes, tell them a second entry from the same person within a month is checked before it shows. Don't press if the user declines, and don't ask again.

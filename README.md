@@ -33,6 +33,7 @@ This is the free version of Levels.fyi for individuals. It has pay by job family
 | [`compare-offers`](plugin/skills/compare-offers/SKILL.md) | Compares two or more offers side by side, yearly and over four years |
 | [`benchmark-my-pay`](plugin/skills/benchmark-my-pay/SKILL.md) | Benchmarks your current pay, a raise, a promotion or a comp statement against your company's levels |
 | [`contribute-salary`](plugin/skills/contribute-salary/SKILL.md) | Adds your salary or offer to Levels.fyi, after you confirm a preview |
+| [`find-jobs`](plugin/skills/find-jobs/SKILL.md) | Finds open jobs on Levels.fyi with the pay each posting states, including jobs that pay more than you make |
 
 See [plugin/README.md](plugin/README.md) for example prompts and what data the plugin sends.
 

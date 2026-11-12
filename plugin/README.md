@@ -44,8 +44,9 @@ Then connect the Levels.fyi connector when asked. You can ask questions without 
 
 - **benchmark-my-pay**: Benchmark the user's current pay with Levels.fyi data. Use for 'am I underpaid', raise or promotion talks, merit-cycle or comp statements, equity refreshers, and recruiter pay-expectation questions.
 - **compare-offers**: Compare job offers side by side with Levels.fyi pay data. Use when the user has two or more offers, a counteroffer, or an offer and their current job, and asks which to take or which pays more.
-- **contribute-salary**: Add the user's own salary or offer to Levels.fyi. Use when the user wants to share, submit or add their pay, including from an offer letter or comp statement, or says yes after you offer to add it.
+- **contribute-salary**: Add the user's own salary or offer to Levels.fyi, after a preview. Use when they ask to add, share or submit their pay or an offer, or say yes after you offer. Not for other people's pay or estimates.
 - **evaluate-offer**: Evaluate a job offer, counteroffer or retention offer against Levels.fyi pay. Use when the user shares or uploads an offer letter and asks if it's good, fair or low, or what to negotiate.
+- **find-jobs**: Find open jobs on Levels.fyi with the pay each posting states. Use when the user asks for jobs, open roles, who's hiring, or jobs that pay more than they make. Not for recruiters sourcing candidates.
 - **get-started**: Show what Levels.fyi can do and suggest first questions. Use right after the plugin is installed, or when the user asks what Levels.fyi can do or how to start.
 - **levels-fyi**: Answer pay and job questions with Levels.fyi data, or report wrong or missing data. Use for any salary or pay question, company pay by level, pay by city or country, RSU vesting, or open jobs.
 
@@ -57,7 +58,7 @@ Then connect the Levels.fyi connector when asked. You can ask questions without 
 
 ## Data
 
-The plugin has no code of its own: its skills are instructions for the assistant. To answer, the assistant sends the companies, roles, levels and locations you ask about to the Levels.fyi MCP server. It also sends what you choose to share: a salary or offer you add, with your email if you aren't signed in, or a resume you upload after signing in. If you agree, it sends a short report when you say Levels.fyi data is wrong or missing, without personal details unless you add your email for a reply. Levels.fyi handles that data under its privacy policy. The server is `https://mcp.levels.fyi/`. Each request names the app it comes from, so Levels.fyi can count use per app: an `X-Levels-Source` header with the plugin version, such as `claude-plugin/1.0.0`, or in ChatGPT and Codex a `client=openai-plugin` parameter in the server URL. It holds nothing about you.
+The plugin has no code of its own: its skills are instructions for the assistant. To answer, the assistant sends the companies, roles, levels and locations you ask about to the Levels.fyi MCP server. It also sends what you choose to share: a salary or offer you add, with your email if you aren't signed in, or a resume you upload after signing in. If you agree, it sends a short report when you say Levels.fyi data is wrong or missing, without personal details unless you add your email for a reply. Levels.fyi handles that data under its privacy policy. The server is `https://mcp.levels.fyi/`. Each request names the app it comes from, so Levels.fyi can count use per app: an `X-Levels-Source` header with the plugin version, such as `claude-plugin/1.0.1`, or in ChatGPT and Codex a `client=openai-plugin` parameter in the server URL. It holds nothing about you.
 
 ## Links
 

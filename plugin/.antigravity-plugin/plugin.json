@@ -2,7 +2,7 @@
   "$schema": "https://antigravity.google/schemas/v1/plugin.json",
   "name": "levels-fyi",
   "displayName": "Levels.fyi",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Real salaries and company levels from Levels.fyi: check if an offer is fair, compare offers, find jobs with pay shown and add your own salary.",
   "author": {
     "name": "Levels.fyi",

@@ -5,7 +5,7 @@
       "type": "streamable-http",
       "url": "https://mcp.levels.fyi/",
       "headers": {
-        "X-Levels-Source": "agent-plugin/1.0.0"
+        "X-Levels-Source": "agent-plugin/1.0.1"
       }
     }
   }

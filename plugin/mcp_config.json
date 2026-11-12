@@ -3,7 +3,7 @@
     "levels-fyi": {
       "serverUrl": "https://mcp.levels.fyi/",
       "headers": {
-        "X-Levels-Source": "antigravity-plugin/1.0.0"
+        "X-Levels-Source": "antigravity-plugin/1.0.1"
       }
     }
   }

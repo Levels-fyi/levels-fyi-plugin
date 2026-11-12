@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "levels-fyi",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Salaries, jobs and career insights from 1M+ salaries shared on Levels.fyi, across 100+ roles: benchmark your pay, evaluate and compare offers and counteroffers, check a raise, promotion or merit cycle, compare company levels and locations, search open jobs and add your own salary.",
   "author": {
     "name": "Levels.fyi",
@@ -113,7 +113,7 @@
         "commerce": false
       },
       "publication": {
-        "release_notes": "First release: pay by company and level, market medians by role and location, offer evaluation and comparison, benchmarking your own pay, a raise or a promotion, open jobs, adding your own salary or offer, and a get-started guide."
+        "release_notes": "A clearer preview before adding a salary (what's public, the optional verification email, enhanced anonymity), submission counts with pay figures, and a find-jobs skill. The offer skills no longer mention paid products."
       },
       "apps": "./.app.json"
     }

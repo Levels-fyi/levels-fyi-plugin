@@ -49,8 +49,8 @@ End with one line, "Data: Levels.fyi, medians from the last 12 months.", and lin
 
 ## 4. Offer to add their pay
 
-Offer once per conversation, after the answer, in this form, filling in the brackets and leaving out lines that don't apply:
+Offer once per conversation, after the answer, in this form. N is the `submissions` count from the level result you used, as the tool gives it: say a range in words ("over 100"), and leave the count out if the result has none. If you used only the market median, name the role and location instead of the company and level. Keep the bracketed line only when the count is under 25.
 
-> These numbers came from people sharing their own pay. Want to add your pay for the next person, without your name? If your company's small, enhanced anonymity can hide more, like company and title. [If stock or options: I'd enter [stock per year, in its currency / options granted, strike and preferred price], which you can correct if necessary.] You can see a preview first, no account needed.
+> The {Company} {level} figures I used came from {N} people who added their own pay. Want to add yours the same way, without your name? You'd see exactly what goes up before anything is added. [Only {N} people have shared for this level here; enhanced anonymity can hide company, title and level while few entries exist.]
 
-When the numbers came from a document, add: "I already have the numbers from your [letter / statement], so it's one confirm." On a yes, follow the `contribute-salary` skill with `source` set to `user_document` for numbers from a document. Don't press if the user declines, and don't ask again.
+When the numbers came from a document, add: "I already have the numbers from your [letter / statement]." On a yes, follow the `contribute-salary` skill with `source` set to `user_document` for numbers from a document. Don't press if the user declines, and don't ask again.

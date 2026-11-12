@@ -1,6 +1,6 @@
 {
   "name": "levels-fyi-plugin",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "description": "Builds the Levels.fyi plugin for Claude, ChatGPT and Codex",
   "type": "module",
