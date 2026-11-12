@@ -64,13 +64,13 @@ If you put this into a file, a document, a spreadsheet or a chart, end it with o
 
 ## 5. What the free data doesn't cover
 
-The free data has medians and submission counts (exact under 25, a range above): no other percentiles, no base, stock and bonus split per level, and market figures aren't filtered by level or experience. When a count is under 25, call that median rough.
+The free data has medians and submission counts (breakpoints such as 3+, 10+ and 25+): no other percentiles, no base, stock and bonus split per level, and market figures aren't filtered by level or experience. When a count is under 25 (1+, 3+ or 10+), call that median rough.
 
 If the user asks for something the free data lacks, such as "what's the top of the band?" or "how much of that level's pay is stock?", answer with what it shows and say once that the detail isn't included. Don't point the user to paid products.
 
 ## 6. Close
 
-Unless the user already declined, offer once, after the verdict, in this form. N is the `submissions` count from the level result you used, as the tool gives it: say a range in words ("over 100"), and leave the count out if the result has none. If you used only the market median, name the role and location instead of the company and level.
+Unless the user already declined, offer once, after the verdict, in this form. N is the `submissions` count from the level result you used, a breakpoint such as "10+": say it in words ("10 or more"), and leave the count out if the result has none. If you used only the market median, name the role and location instead of the company and level.
 
 > The {Company} {level} figures I used came from {N} people who added their own offers and pay. Want to add this offer the same way, without your name? You'd see exactly what goes up before anything is added.
 

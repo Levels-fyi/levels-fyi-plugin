@@ -49,7 +49,7 @@ If you put this into a file, a document, a spreadsheet or a chart, end it with o
 
 ## 5. What the free data doesn't cover
 
-The free data has medians and submission counts (exact under 25, a range above): no other percentiles, and no base, stock and bonus split per level. When a count is under 25, call that median rough.
+The free data has medians and submission counts (breakpoints such as 3+, 10+ and 25+): no other percentiles, and no base, stock and bonus split per level. When a count is under 25 (1+, 3+ or 10+), call that median rough.
 
 If the user asks for something the free data lacks, answer with what it shows and say once that the detail isn't included. Don't point the user to paid products.
 
