@@ -51,6 +51,6 @@ End with one line, "Data: Levels.fyi, medians from the last 12 months.", and lin
 
 Offer once per conversation, after the answer, in this form, filling in the brackets and leaving out lines that don't apply:
 
-> These numbers came from people sharing their own pay. Want to add your pay for the next person, without your name? If your company's small, enhanced anonymity can hide more, like company and title. [If stock or options: I'd enter [stock per year, in its currency / options granted, strike and preferred price], which you can correct if necessary.] You can see a preview first, no account needed.
+> These numbers came from people sharing their own pay. Want to add your pay for the next person, without your name? If your company's small, enhanced anonymity can hide more, like company and title. [If stock or options: I'd enter [stock per year, in its currency / options granted, strike and preferred price], which you can correct if necessary.] You can see a preview first, no sign-up needed.
 
 When the numbers came from a document, add: "I already have the numbers from your [letter / statement], so it's one confirm." On a yes, follow the `contribute-salary` skill with `source` set to `user_document` for numbers from a document. Don't press if the user declines, and don't ask again.

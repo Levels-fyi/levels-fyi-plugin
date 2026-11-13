@@ -5,7 +5,7 @@ description: Add the user's own salary or offer to Levels.fyi. Use when the user
 
 # Add the user's salary to Levels.fyi
 
-Help the user add their own pay or an offer they received, using `add-salary-submission`. No account is needed: a signed-in user's submission is tied to their account, and anyone else gives an email address instead.
+Help the user add their own pay or an offer they received, using `add-salary-submission`. No sign-up is needed: a signed-in user's submission is tied to their account. Anyone else gives an email address, and by default that email gets a light Levels.fyi account: Levels.fyi emails a magic sign-in link, with no password to set, so the user can find the entry later. It's not a full account sign-up. Say this plainly before they give the email.
 
 This needs the connected Levels.fyi tools. If they aren't available, ask the user to connect Levels.fyi in their app's plugin or connector settings, and don't submit any other way.
 
@@ -47,8 +47,8 @@ If the user doesn't know, `get-vesting-schedules` shows the company's usual sche
 2. Call `add-salary-submission` with `confirm: false`. Set `source` to `user_document` when the numbers come from an offer letter or pay stub the user shared, otherwise `user_stated`.
 3. Show the preview in this form, leaving out lines that don't apply, and ask about anything in `notProvided` that they have:
 
-   > The entry would look like this: [entry, pay in its own currency; [stock per year]; [options granted, strike and preferred price]]. Your name and email never show. [If stock or options: I've entered [stock per year, in its currency / options granted, strike and preferred price]. Fix or drop that if it's off.] [If not signed in: your email only verifies this and is never shown. Levels.fyi may email you for an offer letter or pay stub. That's optional, and it's reviewed either way.] Tell me what to change, or say confirm.
-4. If the user isn't signed in, ask for their email and pass it as `email`. Say it's used to verify the entry, not shown with it. Never use an email they gave for anything else.
+   > The entry would look like this: [entry, pay in its own currency; [stock per year]; [options granted, strike and preferred price]]. Your name and email never show. [If stock or options: I've entered [stock per year, in its currency / options granted, strike and preferred price]. Fix or drop that if it's off.] [If not signed in: your email verifies this and is never shown. It also gets you a light Levels.fyi account by default: you'll get an email with a sign-in link, no password, so you can find this entry later. Levels.fyi may email you for an offer letter or pay stub. That's optional, and it's reviewed either way.] Tell me what to change, or say confirm.
+4. If the user isn't signed in, ask for their email and pass it as `email`. Say it's used to verify the entry and to set up a light account with a magic sign-in link, and is never shown with the entry. Never use an email they gave for anything else.
 5. If the user asks for enhanced anonymity, at any point, set `anonymise: true`. It can hide details like company and title on the public entry.
 6. Only after a clear yes, call again with the same arguments, the same `submissionId`, and `confirm: true`.
 

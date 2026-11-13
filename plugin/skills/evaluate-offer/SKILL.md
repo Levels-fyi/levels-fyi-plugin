@@ -53,6 +53,7 @@ Then:
 - The market median, labelled as covering all levels, so it is a rough reference rather than a like-for-like comparison.
 - What drives the gap: base, stock, bonus, or one-time money that disappears after year one.
 - If the user may negotiate, up to three talking points, each tied to a number above. Sign-on and stock usually move more than base.
+- If the user asks for help negotiating it with a person, call `get-domain-knowledge` with topic `negotiation_coaching` and pass on what it returns (price, guarantee, published results and free consult link when they're there), exactly as given. Don't raise it unasked.
 
 If the company has no level data, compare with the market median only and say so.
 
