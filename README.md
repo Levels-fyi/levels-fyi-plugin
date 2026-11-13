@@ -15,7 +15,7 @@ This is the free version of Levels.fyi for individuals. It has pay by job family
 
 | App | How |
 |---|---|
-| Claude (web, desktop, Cowork) | **Customize** > **Plugins**, then add Levels.fyi from the directory. For the connector only, [add it in one click](https://claude.ai/new?modal=add-custom-connector&connectorName=Levels.fyi&connectorUrl=https%3A%2F%2Fmcp.levels.fyi%2F) |
+| Claude (web, desktop, Cowork) | **Plugins** in the sidebar, then add Levels.fyi from the directory. For the connector only, open [your plugins](https://claude.ai/plugins/yours), choose **Add** > **Add custom connector**, and enter `https://mcp.levels.fyi/` |
 | Claude Code | `/plugin install levels-fyi --marketplace Levels-fyi/levels-fyi-plugin` |
 | ChatGPT | [Add Levels.fyi to ChatGPT](https://chatgpt.com/plugins/plugin_asdk_app_6ae3865358688191a1e33cfb669dc25a) |
 | Codex | `codex plugin marketplace add Levels-fyi/levels-fyi-plugin`, then install Levels.fyi |
