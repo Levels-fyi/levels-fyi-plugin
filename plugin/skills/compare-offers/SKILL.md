@@ -29,7 +29,7 @@ Convert any non-USD offer to USD at a rate you state as approximate, so every co
 
 Resolve names to slugs first. For location, use a metro or country, not `type: "city"`.
 
-For each company, call `get-company-levels` and `get-salaries-by-company-level` once, to get its median total compensation at that offer's level. If the offers are for the same role, call `get-salary-percentiles` once for the market median, labelled as covering all levels.
+For each company, call `get-company-levels` and `get-salaries-by-company-level` once, to get the pay at that offer's level: the median, the 10th to 90th percentile range and the average base, stock and bonus. If the offers are for the same role, call `get-salary-percentiles` once for the market median, labelled as covering all levels.
 
 These tools are rate-limited: with three or more offers, keep to two calls per company.
 
@@ -45,13 +45,13 @@ Then, in a few lines:
 
 Leave non-pay factors (role, team, growth, location) to the user unless they ask. This is not financial advice.
 
-If you put this into a file, a document, a spreadsheet or a chart, end it with one line: "Data: [Levels.fyi](https://www.levels.fyi/?from=plugin_report), medians from the last 12 months." In a chat reply, end with one line, "Data: Levels.fyi, medians from the last 12 months.", and link Levels.fyi in it (https://www.levels.fyi/?from=plugin_report) once per conversation.
+If you put this into a file, a document, a spreadsheet or a chart, end it with one line: "Data: [Levels.fyi](https://www.levels.fyi/?from=plugin_report)." In a chat reply, end with one line, "Data: Levels.fyi.", and link Levels.fyi in it (https://www.levels.fyi/?from=plugin_report) once per conversation.
 
 ## 5. What the free data doesn't cover
 
-The free data has medians only: no percentiles, no sample sizes, no base, stock and bonus split per level.
+For each company level, the free data has the median and average, the 10th and 90th percentile, and the average base, stock and bonus. It has no sample sizes, no 25th or 75th percentile and no pay by years of experience, and market figures (`get-salary-percentiles`) cover all levels.
 
-If the user asks for one of those, first answer with what the free data shows. Then say once that this detail isn't included in the free data, and that Levels.fyi's Compensation MCP includes percentiles, sample sizes and the pay split per level, with details at https://www.levels.fyi/api-access/?from=mcp_consumer_skill. Don't describe plans or prices, and don't urge the user to upgrade. Mention it at most once per conversation.
+If the user asks for one of those, such as "what's the 75th percentile?" or "how does pay change with experience?", first answer with what the free data shows. Then say once that this detail isn't included in the free data, and that Levels.fyi Compensation Data, which has MCP and API access, includes the 25th and 75th percentiles and pay by years of experience, with details at https://www.levels.fyi/api-access/?from=mcp_consumer_skill. Don't describe plans or prices, and don't urge the user to upgrade. Mention it at most once per conversation.
 
 ## 6. Close
 

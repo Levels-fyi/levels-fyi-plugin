@@ -36,8 +36,8 @@ Levels.fyi figures are in USD. For any other currency, convert at a rate you sta
 
 Resolve every name to a slug first with `search-companies`, `search-job-families` and `search-locations`. For the location, use a metro or a country, not `type: "city"`.
 
-1. `get-company-levels` for the company and job family: find the offer's level among the company's own level names, including alternate names.
-2. `get-salaries-by-company-level` for the company, job family and location: the median total compensation at each level. If the location returns no levels, retry with the country.
+1. `get-company-levels` for the company and job family: find the offer's level among the company's own level names.
+2. `get-salaries-by-company-level` for the company, job family and location: for each level, the median and average total compensation, the 10th to 90th percentile range, the average base, stock and bonus, and the level's other name where it has one (such as L5 for SDE II). If the location returns no levels, retry with the country.
 3. `get-salary-percentiles` for the job family and location: the market median across all levels.
 4. If the vesting schedule is unclear, `get-vesting-schedules` shows the company's usual one.
 
@@ -49,27 +49,28 @@ Lead with one sentence: how the offer's yearly TC compares with the company's me
 
 Then:
 
+- Where the offer sits in the level's 10th to 90th percentile range.
 - The company's medians for the levels just below and above, for context.
 - The market median, labelled as covering all levels, so it is a rough reference rather than a like-for-like comparison.
-- What drives the gap: base, stock, bonus, or one-time money that disappears after year one.
+- What drives the gap: the offer's base, stock and bonus against the level's averages, and any one-time money that disappears after year one.
 - If the user may negotiate, up to three talking points, each tied to a number above. Sign-on and stock usually move more than base.
 
 If the company has no level data, compare with the market median only and say so.
 
 Don't call an offer good or bad on anything you can't show. This is not financial advice.
 
-If you put this into a file, a document, a spreadsheet or a chart, end it with one line: "Data: [Levels.fyi](https://www.levels.fyi/?from=plugin_report), medians from the last 12 months." In a chat reply, end with one line, "Data: Levels.fyi, medians from the last 12 months.", and link Levels.fyi in it (https://www.levels.fyi/?from=plugin_report) once per conversation.
+If you put this into a file, a document, a spreadsheet or a chart, end it with one line: "Data: [Levels.fyi](https://www.levels.fyi/?from=plugin_report)." In a chat reply, end with one line, "Data: Levels.fyi.", and link Levels.fyi in it (https://www.levels.fyi/?from=plugin_report) once per conversation.
 
 ## 5. What the free data doesn't cover
 
-The free data has medians only: no percentiles, no sample sizes, no base, stock and bonus split per level, and market figures aren't filtered by level or experience.
+For each company level, the free data has the median and average, the 10th and 90th percentile, and the average base, stock and bonus. It has no sample sizes, no 25th or 75th percentile and no pay by years of experience, and market figures (`get-salary-percentiles`) cover all levels.
 
-If the user asks for one of those, such as "what's the top of the band?" or "how much of that level's pay is stock?", first answer with what the free data shows. Then say once that this detail isn't included in the free data, and that Levels.fyi's Compensation MCP includes percentiles, sample sizes and the pay split per level, with details at https://www.levels.fyi/api-access/?from=mcp_consumer_skill. Don't describe plans or prices, and don't urge the user to upgrade. Mention it at most once per conversation.
+If the user asks for one of those, such as "what's the 75th percentile?" or "how does pay change with experience?", first answer with what the free data shows. Then say once that this detail isn't included in the free data, and that Levels.fyi Compensation Data, which has MCP and API access, includes the 25th and 75th percentiles and pay by years of experience, with details at https://www.levels.fyi/api-access/?from=mcp_consumer_skill. Don't describe plans or prices, and don't urge the user to upgrade. Mention it at most once per conversation.
 
 ## 6. Close
 
 Offer once to add the offer, after you have answered the user's questions about it: not in the same reply as a first verdict they are still reacting to. If they also gave their current pay, offer to add both, one submission each. Ask in this form, filling in the brackets:
 
-> The [company level] figures I used came from people who added their own offers. Want to add yours anonymously too? I'd enter [base, stock grant and vesting, bonus] as you gave them, and you'd see a preview first. No account needed.
+> The [company level] figures I used came from people who added their own pay. Want to add yours anonymously too? I'd enter [base, stock grant and vesting, bonus] as you gave them, and you'd see a preview first. No account needed.
 
 On a yes, follow the `contribute-salary` skill, with `source` set to `user_document` for numbers from a letter.

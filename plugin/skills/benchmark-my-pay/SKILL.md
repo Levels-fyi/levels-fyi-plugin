@@ -26,8 +26,8 @@ Stock options are out of scope for the numbers: mention them, don't value them.
 
 Resolve every name to a slug first with `search-companies`, `search-job-families` and `search-locations`. For the location, use a metro or a country, not `type: "city"`.
 
-1. `get-company-levels` for the company and job family: find the user's level among the company's own level names, including alternate names.
-2. `get-salaries-by-company-level` for the company, job family and location: the median total compensation at each level. If the location returns no levels, retry with the country.
+1. `get-company-levels` for the company and job family: find the user's level among the company's own level names.
+2. `get-salaries-by-company-level` for the company, job family and location: for each level, the median and average total compensation, the 10th to 90th percentile range, the average base, stock and bonus, and the level's other name where it has one (such as L5 for SDE II). If the location returns no levels, retry with the country.
 3. `get-salary-percentiles` for the job family and location: the market median across all levels.
 
 Skip any step the user's question doesn't need.
@@ -40,12 +40,12 @@ Then, as the question needs:
 
 - **Raise or merit cycle:** where the new pay sits against the level median, and what the change moved.
 - **Promotion:** the median at the next level up, and the gap to it.
-- **Recruiter asks for expectations:** a range built from the medians at the user's level and the next level up, with the numbers it rests on. Suggest they anchor on total pay, not base alone.
+- **Recruiter asks for expectations:** numbers drawn from their level's 10th to 90th percentile range and the next level's median, with what they rest on. Suggest they anchor on total pay, not base alone.
 - **Equity refreshers:** the free data doesn't show refresher norms. Say so plainly, and compare total pay instead.
 
 The market median covers all levels, so call it a rough reference, not a like-for-like comparison. Don't call pay fair or unfair on anything you can't show. This is not financial advice.
 
-End with one line, "Data: Levels.fyi, medians from the last 12 months.", and link Levels.fyi in it (https://www.levels.fyi/?from=plugin_report) once per conversation.
+End with one line, "Data: Levels.fyi.", and link Levels.fyi in it (https://www.levels.fyi/?from=plugin_report) once per conversation.
 
 ## 4. Offer to add their pay
 

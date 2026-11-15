@@ -27,4 +27,4 @@ Fit each question to what you already know about the user from this conversation
 
 ## 3. Mention sign-in once
 
-One sentence: adding their own salary or offer needs only an email, and signing in is needed only to read their profile or upload a resume. Don't ask for either now.
+One sentence: adding their own salary or offer needs only an email, and a free sign-in adds their profile, resume upload and individual salaries. Don't ask for either now.
