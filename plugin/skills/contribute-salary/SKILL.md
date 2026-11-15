@@ -22,7 +22,7 @@ If the user shared an offer letter, comp statement or pay stub, take the details
 1. **Company, role and title.** Resolve with `search-companies` and `search-job-families`. Use `companyName` only when `search-companies` finds nothing.
 2. **Location: a city.** Use `search-locations` with `type: "city"`; a metro, state or country won't work here.
 3. **Offer or current pay?** Offers need the offer date. For current pay, ask how long they have been at the company.
-4. **Level.** Use the company's own level name from `get-company-levels` when the company has a ladder.
+4. **Level.** Use the company's own level name when it has a ladder. Don't guess it: if the user isn't sure, show the names from `get-company-levels` and say their offer letter or HR system shows it.
 5. **Base salary,** its currency and period.
 6. **Stock.** For an offer: the total grant and the vesting schedule. For current pay: the stock value they receive per year.
 7. **Bonus.** For an offer: the target, as an amount or a percent of base. For current pay: the bonus they actually receive per year.

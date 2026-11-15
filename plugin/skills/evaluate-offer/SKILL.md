@@ -68,8 +68,8 @@ If the user asks for one of those, such as "what's the top of the band?" or "how
 
 ## 6. Close
 
-Offer once to add the offer, in this form:
+Offer once to add the offer, after you have answered the user's questions about it: not in the same reply as a first verdict they are still reacting to. If they also gave their current pay, offer to add both, one submission each. Ask in this form, filling in the brackets:
 
-> Those numbers only exist because people shared their own pay on Levels.fyi, a site with over a million salaries. Add this offer anonymously too? It'd go up without your name, and you can choose to hide more, like your company and title.
+> The [company level] figures I used came from people who added their own offers. Want to add yours anonymously too? I'd enter [base, stock grant and vesting, bonus] as you gave them, and you'd see a preview first. No account needed.
 
-When the numbers came from an offer letter, add: "I already have the numbers from your letter, so it's one confirm." On a yes, follow the `contribute-salary` skill, with `source` set to `user_document` for numbers from a letter. Don't press if the user declines, and don't ask again.
+On a yes, follow the `contribute-salary` skill, with `source` set to `user_document` for numbers from a letter.

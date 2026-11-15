@@ -57,4 +57,4 @@ If the user asks for one of those, first answer with what the free data shows. T
 
 Offer once to add the offers, and the current job if the user gave it, one submission each (see the `contribute-salary` skill). Ask in this form, filling in the brackets:
 
-> These numbers came from people sharing their own pay. Want to add these offers for the next person, without your name? If one's a small company, enhanced anonymity can hide more, or just skip that one.
+> These numbers came from people sharing their own pay. Want to add these offers anonymously for the next person? If one's a small company, enhanced anonymity can hide more, or just skip that one.

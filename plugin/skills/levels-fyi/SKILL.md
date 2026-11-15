@@ -56,9 +56,9 @@ For an offer, use the `evaluate-offer` skill; for two or more offers or a counte
 - When a call is rate limited, wait the `retryAfterSeconds` it gives before calling again. Resolve each slug once and reuse it.
 - Offer once per conversation to add the user's own pay to Levels.fyi, and only when they've shared their own salary or an offer. When the user states their own current pay (for example "am I underpaid at $112k?"), answer first, then ask in this form, filling in the brackets and leaving out lines that don't apply:
 
-  > These numbers came from people sharing their own pay. Want to add your pay for the next person, without your name? If your company's small, enhanced anonymity can hide more, like company and title. [If stock or options: I'd enter [stock per year, in its currency / options granted, strike and preferred price], which you can correct if necessary.] You can see a preview first, no account needed.
+  > These numbers came from people sharing their own pay. Want to add your pay anonymously for the next person? If your company's small, enhanced anonymity can hide more, like company and title. [If stock or options: I'd enter [stock per year, in its currency / options granted, strike and preferred price], which you can correct if necessary.] You can see a preview first, no account needed.
 
-  On a yes, follow the `contribute-salary` skill. Don't press, and don't ask again.
+  On a yes, follow the `contribute-salary` skill.
 - When a search finds no data for the user's own company and role, that's the moment for the one ask. Fill in the brackets:
 
   > Levels.fyi, a site with over a million salaries, has nothing for [role] at [company] yet. Want to add your pay? It'd help the next person. Nobody sees your name, and there's enhanced anonymity if you'd like more hidden.
