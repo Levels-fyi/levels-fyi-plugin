@@ -76,7 +76,7 @@
       "Find open jobs and add your own salary or offer to Levels.fyi."
     ],
     "examplePrompts": [
-      "@Levels.fyi what does a Google L5 software engineer make in Seattle?",
+      "@Levels.fyi what does a Google L5 software engineer make in Seattle, and is Google hiring there?",
       "@Levels.fyi is a $250k offer from Stripe for a senior engineer good?",
       "Use Levels.fyi to compare my offers from Meta and Airbnb."
     ]
@@ -95,6 +95,7 @@
     "I have a Stripe offer: $210k base, $400k RSUs over 4 years. Is it good?",
     "Find remote product manager jobs that pay at least $200k base."
   ],
+  "testPrompt": "Use Levels.fyi to check what a Google L5 software engineer makes in Seattle and whether Google is hiring there.",
   "brand": {
     "color": "#0060b9",
     "colorDark": "#7db0ee"

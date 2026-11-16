@@ -32,13 +32,15 @@ Salaries, jobs and career insights from 1M+ salaries shared on Levels.fyi, acros
 
 ## Install
 
-- **Claude (web, desktop and Cowork)**: open **Customize**, then **Plugins**, and add Levels.fyi from the directory.
-- **Claude Code**: run `/plugin install levels-fyi --marketplace Levels-fyi/levels-fyi-plugin`.
-- **Codex**: run `codex plugin marketplace add Levels-fyi/levels-fyi-plugin`, then install Levels.fyi from the plugin list.
+- **Claude (web, desktop and Cowork)**: click **Plugins** in the left sidebar, then search for Levels.fyi and install it.
+- **Claude Code**: run `claude plugin marketplace add Levels-fyi/levels-fyi-plugin && claude plugin install levels-fyi@levels-fyi`.
+- **Codex**: run `codex plugin marketplace add Levels-fyi/levels-fyi-plugin && codex plugin add levels-fyi@levels-fyi`.
 - **ChatGPT**: [add Levels.fyi to ChatGPT](https://chatgpt.com/plugins/plugin_asdk_app_6ae3865358688191a1e33cfb669dc25a).
 - **Cursor**: in **Dashboard** > **Plugins & MCPs**, select **Add Marketplace** > **Import from Repo** and enter `https://github.com/Levels-fyi/levels-fyi-plugin`.
 
 Then connect the Levels.fyi connector when asked. You can ask questions without signing in.
+
+To check it works, ask: "Use Levels.fyi to check what a Google L5 software engineer makes in Seattle and whether Google is hiring there."
 
 ## Skills
 

@@ -11,7 +11,7 @@
 //   plugin/.antigravity-plugin/plugin.json, plugin/mcp_config.json   Antigravity manifest and MCP server
 //   plugin/.plugin/plugin.json, plugin/.plugin/mcp.json    Open Plugin manifest and MCP server
 //   plugin/README.md, plugin/LICENSE                       the listing description and the license
-//   .claude-plugin/marketplace.json                        Claude Code: /plugin install levels-fyi --marketplace <repo>
+//   .claude-plugin/marketplace.json                        Claude Code: claude plugin marketplace add <repo>
 //   .agents/plugins/marketplace.json                       Codex: codex plugin marketplace add <repo>
 //   .cursor-plugin/marketplace.json                        Cursor: Import from Repo
 //   CHANGELOG.md                                           from listing.releaseNotes
@@ -297,12 +297,12 @@ ${Object.entries(listing.capabilityGroups)
 
 ## Install
 
-- **Claude (web, desktop and Cowork)**: open **Customize**, then **Plugins**, and add ${listing.displayName} from the directory.
-${repositorySlug ? `- **Claude Code**: run \`/plugin install ${listing.name} --marketplace ${repositorySlug}\`.\n- **Codex**: run \`codex plugin marketplace add ${repositorySlug}\`, then install ${listing.displayName} from the plugin list.\n` : ''}- **ChatGPT**: [add ${listing.displayName} to ChatGPT](${listing.urls.chatgpt}).
+- **Claude (web, desktop and Cowork)**: click **Plugins** in the left sidebar, then search for ${listing.displayName} and install it.
+${repositorySlug ? `- **Claude Code**: run \`claude plugin marketplace add ${repositorySlug} && claude plugin install ${listing.name}@${listing.name}\`.\n- **Codex**: run \`codex plugin marketplace add ${repositorySlug} && codex plugin add ${listing.name}@${listing.name}\`.\n` : ''}- **ChatGPT**: [add ${listing.displayName} to ChatGPT](${listing.urls.chatgpt}).
 ${repositorySlug ? `- **Cursor**: in **Dashboard** > **Plugins & MCPs**, select **Add Marketplace** > **Import from Repo** and enter \`https://github.com/${repositorySlug}\`.` : ''}
 
 Then connect the ${listing.displayName} connector when asked. You can ask questions without signing in.
-
+${listing.testPrompt ? `\nTo check it works, ask: "${listing.testPrompt}"\n` : ''}
 ## Skills
 
 ${skills.map(skill => `- **${skill}**: ${skillDescriptions[skill]}`).join('\n')}
