@@ -45,7 +45,7 @@ Then, as the question needs:
 
 The market median covers all levels, so call it a rough reference, not a like-for-like comparison. Don't call pay fair or unfair on anything you can't show. This is not financial advice.
 
-End with one line, "Data: Levels.fyi.", and link Levels.fyi in it (https://www.levels.fyi/?from=plugin_report) once per conversation.
+End with one line, "Data: Levels.fyi.", and link Levels.fyi in it (https://www.levels.fyi/?from=plugin_report).
 
 ## 4. Offer to add their pay
 

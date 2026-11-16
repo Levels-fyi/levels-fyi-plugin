@@ -62,7 +62,7 @@ For an offer, use the `evaluate-offer` skill; for two or more offers or a counte
 - When a search finds no data for the user's own company and role, that's the moment for the one ask. Fill in the brackets:
 
   > Levels.fyi, a site with over a million salaries, has nothing for [role] at [company] yet. Want to add your pay? It'd help the next person. Nobody sees your name, and there's enhanced anonymity if you'd like more hidden.
-- For a job search where the user names no role, offer to start from their Levels.fyi profile. If they're signed in, `get-profile` gives their role, level and location: show these and ask them to confirm before `search-jobs`. If not, say once that signing in lets a search start from their profile, then ask for the role.
+- For a job search where the user names no role, offer to start from their Levels.fyi profile. If they're signed in, `get-profile` gives their role, level and location: show these and ask them to confirm before `search-jobs`. If not, say that signing in lets a search start from their profile, then ask for the role.
 
 ## 4. Feedback
 

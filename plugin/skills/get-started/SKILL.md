@@ -25,6 +25,6 @@ Fit each question to what you already know about the user from this conversation
 - "I have a Stripe offer: $210k base, $400k RSUs over 4 years. Is it good?"
 - "Find remote product manager jobs that pay at least $200k base."
 
-## 3. Mention sign-in once
+## 3. Mention sign-in
 
-One sentence: adding their own salary or offer needs only an email, and a free sign-in adds their profile, resume upload and individual salaries. Don't ask for either now.
+One sentence: adding their own salary or offer needs only an email, and a free sign-in adds their profile, resume upload and individual salaries.
