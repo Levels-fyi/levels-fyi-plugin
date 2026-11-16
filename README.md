@@ -20,7 +20,7 @@ This is the free version of Levels.fyi for individuals. It has pay by job family
 | ChatGPT | [Add Levels.fyi to ChatGPT](https://chatgpt.com/plugins/plugin_asdk_app_6ae3865358688191a1e33cfb669dc25a) |
 | Codex | `codex plugin marketplace add Levels-fyi/levels-fyi-plugin && codex plugin add levels-fyi@levels-fyi` |
 | Cursor | **Dashboard** > **Plugins & MCPs** > **Add Marketplace** > **Import from Repo**, then enter `https://github.com/Levels-fyi/levels-fyi-plugin`. For the MCP server only, [add it in one click](https://cursor.com/install-mcp?name=levels-fyi&config=eyJ1cmwiOiJodHRwczovL21jcC5sZXZlbHMuZnlpLyJ9) |
-| Antigravity | `agy plugin install https://github.com/Levels-fyi/levels-fyi-plugin` |
+| Antigravity | Open `antigravity://customizations/marketplaces/antigravity-plugins-partners/plugins/levels-fyi` to install it from the Antigravity Marketplace, or run `agy plugin install https://github.com/Levels-fyi/levels-fyi-plugin` |
 | Kiro | [![Add to Kiro](https://kiro.dev/images/add-to-kiro.svg)](https://kiro.dev/launch/mcp/add?name=levels-fyi&config=%7B%22url%22%3A%22https%3A%2F%2Fmcp.levels.fyi%2F%22%2C%22disabled%22%3Afalse%2C%22autoApprove%22%3A%5B%5D%7D) |
 | Gemini | In the Gemini web app, open Settings > [Connected Apps](https://gemini.google.com/apps), click **Add a custom app** and enter `https://mcp.levels.fyi/` (personal Google account in the US) |
 | Any MCP client | Add `https://mcp.levels.fyi/` as a remote MCP server, for example `claude mcp add --transport http levels-fyi https://mcp.levels.fyi/` |
