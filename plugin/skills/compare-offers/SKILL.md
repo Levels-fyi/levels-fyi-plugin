@@ -57,4 +57,4 @@ If the user asks for one of those, such as "what's the 75th percentile?" or "how
 
 Offer once to add the offers, and the current job if the user gave it, one submission each (see the `contribute-salary` skill). Ask in this form, filling in the brackets:
 
-> These numbers came from people sharing their own pay. Want to add these offers anonymously for the next person? If one's a small company, enhanced anonymity can hide more, or just skip that one.
+> These numbers came from people sharing their own pay. Want to add these offers anonymously for the next person? I'd enter each one as you gave it, and you'd see a preview first. No account needed. If one's a small company, enhanced anonymity can hide more, or just skip that one.
