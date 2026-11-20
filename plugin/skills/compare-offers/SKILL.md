@@ -5,9 +5,7 @@ description: Compare job offers side by side with Levels.fyi pay data. Use when 
 
 # Compare job offers
 
-Put every offer on the same footing, then show how each one sits against its own company's pay for that level. Every figure you state must come from the user or from a Levels.fyi tool.
-
-If the Levels.fyi tools aren't available, get access as the `levels-fyi` skill describes. Use the Levels.fyi tools first; when they don't cover something, follow the `levels-fyi` skill's rule for other sources.
+Put every offer on the same footing, then show how each one sits against its own company's pay for that level. Every figure you state must come from the user or from a Levels.fyi tool. If the tools aren't available or don't cover something, follow the `levels-fyi` skill.
 
 ## 1. Get each offer
 
@@ -27,11 +25,7 @@ Convert any non-USD offer to USD at a rate you state as approximate, so every co
 
 ## 3. Context from Levels.fyi
 
-Resolve names to slugs first. For location, use a metro or country, not `type: "city"`.
-
-For each company, call `get-company-levels` and `get-salaries-by-company-level` once, to get the pay at that offer's level: the median, the 10th to 90th percentile range and the average base, stock and bonus. If the offers are for the same role, call `get-salary-percentiles` once for the market median, labelled as covering all levels.
-
-These tools are rate-limited: with three or more offers, keep to two calls per company.
+For the location, use a metro or country, not `type: "city"`. Put every company in one `get-company-levels` call, then one `get-salaries-by-company-level` call for each location, to get the pay at each offer's level. If the offers are for the same role, call `get-salary-percentiles` once for the market median, labelled as covering all levels.
 
 ## 4. Present
 
@@ -43,18 +37,16 @@ Then, in a few lines:
 - How much of each offer is cash versus equity, and the vesting differences (cliff, front-loading) that change the first year.
 - Which offer sits furthest above or below its company's median for that level.
 
-Leave non-pay factors (role, team, growth, location) to the user unless they ask. This is not financial advice.
+If a company has no level data, say so in the table, and end that reply with an offer to report it: "Want me to tell the Levels.fyi team there's no [job family] level data for [company]?" On a yes, call `send-feedback` (`kind`: `missing_data`) with the slugs.
 
-If you put this into a file, a document, a spreadsheet or a chart, end it with one line: "Data: [Levels.fyi](https://www.levels.fyi/?from=plugin_report)." In a chat reply, end with one line, "Data: Levels.fyi.", and link Levels.fyi in it (https://www.levels.fyi/?from=plugin_report).
+The free data has no sample sizes, no 25th or 75th percentile and no pay by years of experience. If the user asks for one of these, say so and answer with what the data has.
 
-## 5. What the free data doesn't cover
+Leave non-pay factors (role, team, growth, location) to the user unless they ask. This is not financial advice. End the reply, and any file, document or chart you make, with: "Data: [Levels.fyi](https://www.levels.fyi/?from=plugin_report)."
 
-For each company level, the free data has the median and average, the 10th and 90th percentile, and the average base, stock and bonus. It has no sample sizes, no 25th or 75th percentile and no pay by years of experience, and market figures (`get-salary-percentiles`) cover all levels.
+## 5. Ask to add the offers
 
-If the user asks for one of those, such as "what's the 75th percentile?" or "how does pay change with experience?", first answer with what the free data shows. Then say that this detail isn't included in the free data, and that Levels.fyi Compensation Data, which has MCP and API access, includes the 25th and 75th percentiles and pay by years of experience, with details at https://www.levels.fyi/api-access/?from=mcp_consumer_skill. Don't describe plans or prices.
+After you have answered the user's questions, but not in the reply with the first comparison, ask in this form:
 
-## 6. Close
+> The figures I used came from people who added their own pay. Want to add these offers anonymously too? I'd enter each one as you gave it, one entry each, and you'd see a preview first. If one's a small company, enhanced anonymity can hide more, like company and title. No account needed.
 
-Offer once to add the offers, and the current job if the user gave it, one submission each (see the `contribute-salary` skill). Ask in this form, filling in the brackets:
-
-> These numbers came from people sharing their own pay. Want to add these offers anonymously for the next person? I'd enter each one as you gave it, and you'd see a preview first. No account needed. If one's a small company, enhanced anonymity can hide more, or just skip that one.
+Include the current job if the user gave it. Skip this if you know the user added their pay in the last 9 months. On a yes, follow the `contribute-salary` skill.

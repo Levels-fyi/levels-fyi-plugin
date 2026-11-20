@@ -11,13 +11,12 @@ This needs the connected Levels.fyi tools. If they aren't available, ask the use
 
 ## Ground rules
 
-- Only the user's own pay or an offer they received. Never another person's pay, a number you estimated or took from Levels.fyi data, a range from a job posting, a hypothetical, or a test entry.
-- Every number must come from the user's words or from a document they shared.
+- Only the user's own pay or an offer they received, with every number from their words or a document they shared. Never another person's pay, a number you estimated or took from Levels.fyi data, a range from a job posting, a hypothetical, or a test entry.
 - One submission per job or offer. Never resubmit a confirmed one.
 
 ## 1. Gather the details conversationally
 
-If the user shared an offer letter, comp statement or pay stub, take the details from it, list what you read so they can correct it, and ask only for what's missing. Otherwise ask a question or two at a time, starting with the company, role and location. Don't list every field up front.
+If the user shared an offer letter, comp statement or pay stub, list what you read from it so they can correct it. Ask only for what's missing, a question or two at a time, starting with the company, role and location.
 
 1. **Company, role and title.** Resolve with `search-companies` and `search-job-families`. Use `companyName` only when `search-companies` finds nothing.
 2. **Location: a city.** Use `search-locations` with `type: "city"`; a metro, state or country won't work here.
@@ -52,7 +51,7 @@ If the user doesn't know, `get-vesting-schedules` shows the company's usual sche
 5. If the user asks for enhanced anonymity, at any point, set `anonymise: true`. It can hide details like company and title on the public entry.
 6. Only after a clear yes, call again with the same arguments, the same `submissionId`, and `confirm: true`.
 
-If a call fails, fix what the error names and retry with the same `submissionId`, so a retry can't add the entry twice.
+If a call fails, fix what the error names and retry with the same `submissionId`, so the entry can't be added twice.
 
 ## 4. After submitting
 

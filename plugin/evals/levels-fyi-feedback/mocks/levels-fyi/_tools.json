@@ -2,7 +2,7 @@
   "tools": [
     {
       "name": "send-feedback",
-      "description": "Report Levels.fyi data that the user says is wrong or missing, or a missing feature. Tell the user what will be sent and get their OK first. Never include personal details.",
+      "description": "Report a wrong, doubtful or missing figure, or something the tools can't do, to the Levels.fyi team. Offer it when the user doubts a figure or a tool finds nothing they asked about. Send it after the user agrees, or when they asked for the report. No personal details; contactEmail only when the user wants a reply and gives it. Returns { received, id }.",
       "annotations": {
         "title": "Send Feedback",
         "readOnlyHint": false,

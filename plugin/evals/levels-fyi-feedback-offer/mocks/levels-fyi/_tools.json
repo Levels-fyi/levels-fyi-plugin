@@ -1,0 +1,149 @@
+{
+  "tools": [
+    {
+      "name": "search-locations",
+      "annotations": {
+        "title": "Search Locations",
+        "readOnlyHint": true,
+        "destructiveHint": false
+      },
+      "description": "Search locations (countries, metro areas / DMAs, and US states) using searchText input (required) and get their Levels.fyi slugs. Use this to resolve a location name (e.g. \"San Francisco\", \"United States\") into the slug the benchmark tools require in their locationSlugs filter. Each result includes its location type. Optionally restrict to one type. Without a type, a name that matches no country, metro or state is searched as a city: each city comes with its parent location (a metro, or the country where there is none), which is the slug to pass to the pay tools. Several places can share a name: pick the one the user means from context, and ask if unsure. If this returns no matches, fall back to search-all, which searches every entity type and applies a fuzzy fallback. REQUIRED arguments: searchText.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "searchText": {
+            "type": "string",
+            "description": "Location name to search for (country, metro area / DMA, or US state).",
+            "example": "San Francisco"
+          },
+          "type": {
+            "type": "string",
+            "description": "Restrict results to one location type. Omit to search countries, metros (DMAs), and states together. Cities are only returned with type \"city\".",
+            "enum": [
+              "country",
+              "dma",
+              "state",
+              "city"
+            ],
+            "example": "dma"
+          },
+          "limit": {
+            "type": "number",
+            "description": "Max results to return (1\u201315).",
+            "example": 10
+          }
+        },
+        "required": [
+          "searchText"
+        ]
+      }
+    },
+    {
+      "name": "search-job-families",
+      "annotations": {
+        "title": "Search Job Families",
+        "readOnlyHint": true,
+        "destructiveHint": false
+      },
+      "description": "Search job families / roles using searchText input (required) and get their Levels.fyi slugs. Use this to resolve a role name (e.g. \"software engineer\", \"product manager\", \"data scientist\") into the jobFamilySlug the benchmark tools require. Returns matching job families with their slugs. A specific title (e.g. \"UX designer\") is not a job family: if this returns no matches, use search-role-terms, which returns the title with its job family slug, then search-all. REQUIRED arguments: searchText.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "searchText": {
+            "type": "string",
+            "description": "Job family / role name to search for (e.g. \"software engineer\", \"product\").",
+            "example": "software engineer"
+          },
+          "limit": {
+            "type": "number",
+            "description": "Max results to return (1\u201315).",
+            "example": 10
+          }
+        },
+        "required": [
+          "searchText"
+        ]
+      }
+    },
+    {
+      "name": "get-salary-percentiles",
+      "description": "Get the median (p50) yearly total compensation in USD for a job family in each of up to 5 locations, across all levels, from submissions in the last 12 months. Pass every location you are comparing in one call.",
+      "annotations": {
+        "title": "Get Salary Percentiles",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "inputSchema": {
+        "type": "object",
+        "required": [
+          "jobFamilySlug",
+          "locationSlugs"
+        ],
+        "properties": {
+          "jobFamilySlug": {
+            "type": "string"
+          },
+          "locationSlugs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1,
+            "maxItems": 5
+          }
+        }
+      }
+    },
+    {
+      "name": "send-feedback",
+      "description": "Report a wrong, doubtful or missing figure, or something the tools can't do, to the Levels.fyi team. Offer it when the user doubts a figure or a tool finds nothing they asked about. Send it after the user agrees, or when they asked for the report. No personal details; contactEmail only when the user wants a reply and gives it. Returns { received, id }.",
+      "annotations": {
+        "title": "Send Feedback",
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false
+      },
+      "inputSchema": {
+        "type": "object",
+        "required": [
+          "kind",
+          "message"
+        ],
+        "properties": {
+          "kind": {
+            "type": "string",
+            "enum": [
+              "wrong_data",
+              "missing_data",
+              "missing_feature",
+              "other"
+            ]
+          },
+          "message": {
+            "type": "string",
+            "maxLength": 1000
+          },
+          "toolName": {
+            "type": "string"
+          },
+          "companySlug": {
+            "type": "string"
+          },
+          "jobFamilySlug": {
+            "type": "string"
+          },
+          "locationSlug": {
+            "type": "string"
+          },
+          "contactEmail": {
+            "type": "string",
+            "format": "email"
+          }
+        }
+      }
+    }
+  ]
+}

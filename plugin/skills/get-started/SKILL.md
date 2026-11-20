@@ -7,24 +7,9 @@ description: Show what Levels.fyi can do and suggest first questions. Use right 
 
 Show the user what they can do now, then let them pick. Keep the reply under 120 words, and don't call any tools until the user asks something.
 
-## 1. Say what's ready
-
-One sentence: Levels.fyi pay data and open jobs are now available here, free and without signing in.
-
-## 2. Suggest three questions
-
-Suggest three questions the user can ask now, one from each area:
-
-- **Pay**: what a company pays at a level, or what a role pays in a city.
-- **An offer**: whether an offer is competitive, or which of two offers is better.
-- **Jobs**: open roles that match what the user is looking for.
-
-Fit each question to what you already know about the user from this conversation or their files: their role, company, level, city, or an offer they mentioned. Use real names, so the question works as written. When you know nothing about the user, use these:
-
-- "I'm a Google L5 in Seattle making $190k base and $120k stock a year. Am I underpaid?"
-- "I have a Stripe offer: $210k base, $400k RSUs over 4 years. Is it good?"
-- "Find remote product manager jobs that pay at least $200k base."
-
-## 3. Mention sign-in
-
-One sentence: adding their own salary or offer needs only an email, and a free sign-in adds their profile, resume upload and individual salaries.
+1. One sentence: Levels.fyi pay data and open jobs are now available here, free and without signing in.
+2. Three questions the user can ask now, one each about **pay** (what a company pays at a level, or a role in a city), **an offer** (is it competitive, or which of two is better) and **jobs** (open roles that match what they want). Fit them to what you know about the user from this conversation or their files, with real names, so each works as written. When you know nothing about the user, use these:
+   - "I'm a Google L5 in Seattle making $190k base and $120k stock a year. Am I underpaid?"
+   - "I have a Stripe offer: $210k base, $400k RSUs over 4 years. Is it good?"
+   - "Find remote product manager jobs that pay at least $200k base."
+3. One sentence: adding their own salary or offer needs only an email, and a free sign-in adds their profile, resume upload and individual salaries.
