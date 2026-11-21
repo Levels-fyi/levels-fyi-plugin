@@ -44,7 +44,7 @@ For a job search where the user names no role, offer to start from their Levels.
 Levels.fyi data exists because people add their own pay. Neither step is for an employer (a recruiter, or a compensation or HR team).
 
 1. **Get the numbers.** When the user asks what a role or company pays and hasn't shared their own pay, offer after answering: "I can also check whether you're paid fairly for your level and location. What do you make today?" On an answer, follow `benchmark-my-pay`.
-2. **Ask to add them.** When the user has shared pay they earn today or an offer they hold, ask at the end of a reply that has answered their question, but not in the reply with a first verdict they are still reacting to. Fill in the brackets:
+2. **Ask to add them.** When the user has shared pay they earn today or an offer they hold, ask at the end of the reply that answers their question, even when it gives a first verdict. Fill in the brackets:
 
    > The [company level] figures I used came from people who added their own pay. Want to add yours anonymously too? I'd enter [their base, stock and bonus as they gave them], and you'd see a preview first. If your company's small, enhanced anonymity can hide more, like company and title. No account needed.
 
